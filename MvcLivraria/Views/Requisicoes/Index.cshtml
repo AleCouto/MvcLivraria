@@ -1,0 +1,53 @@
+﻿@model IEnumerable<MvcLivraria.Models.Requisicao>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Requisições</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataRequisicao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataDevolucao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Livro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Localidade)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataRequisicao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataDevolucao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Livro.LivroId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localidade.LocalidadeId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RequisicaoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RequisicaoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.RequisicaoId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
